@@ -10,6 +10,7 @@ import pacman.controllers.MASController;
 import pacman.controllers.examples.po.POCommGhosts;
 import pacman.game.Constants.*;
 import pacman.game.internal.POType;
+import examples.StarterPacMan.montecarlo.*;
 
 import java.util.EnumMap;
 
@@ -38,7 +39,17 @@ public class Main {
         controllers.put(GHOST.SUE, new Sue());
 
         MASController ghosts = new POCommGhosts(50);
-        executor.runGame(new TreeSearchPacMan(), ghosts, 10); // delay=10; smaller delay for faster gameplay
+        // delay=10; smaller delay for faster gameplay tree search
+        // executor.runGame(new TreeSearchPacMan(), ghosts, 10); 
+
+        // monte carlo version
+        // executor.runGame(new MonteCarloPacMan(), ghosts, 10);
+
+        // A Star
+        // executor.runGame(new AStar(), ghosts, 10);
+
+        //DFS
+        executor.runGame(new DFS(), ghosts, 10);
         // executor.runGame(new CustomTreeSearchPacMan(), ghosts, 10);
     }
 }
