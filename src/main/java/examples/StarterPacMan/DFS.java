@@ -2,6 +2,7 @@ package examples.StarterPacMan;
 
 import pacman.controllers.Controller;
 import pacman.controllers.examples.StarterGhosts;
+import pacman.controllers.examples.po.POCommGhosts;
 import pacman.game.Constants;
 import pacman.game.Game;
 import pacman.game.Constants.MOVE;
@@ -15,7 +16,8 @@ public class DFS extends Controller<Constants.MOVE> {
         MOVE[] moves = game.getPossibleMoves(game.getPacmanCurrentNodeIndex());
         for ( MOVE move: moves) {
             Game copyGame = game.copy();
-            copyGame.advanceGame(move, new StarterGhosts().getMove());
+            copyGame.advanceGame(move, new POCommGhosts().getMove());
+            // copyGame.advanceGame(move, new StarterGhosts().getMove()); // noew starterghost become new POCommGhost
             int value = 0;
             int counter = 0;
             value = dfsRecursive (copyGame, timeDue, counter, 0);
@@ -31,7 +33,7 @@ public class DFS extends Controller<Constants.MOVE> {
         int best = 0;
         int value= gameState.getScore();
         if (counter >= 99) { best = value; return best;}
-        if (gameState.getPacmanNumberOfLivesRemaining() == 0) return -100;
+        if (gameState.getPacmanNumberOfLivesRemaining() <= 2) return value-50;
         if (gameState.getNumberOfActivePills()==0) {
             value = gameState.getScore();
             return value;
@@ -39,7 +41,8 @@ public class DFS extends Controller<Constants.MOVE> {
         MOVE[] moves = gameState.getPossibleMoves(gameState.getPacmanCurrentNodeIndex(), gameState.getPacmanLastMoveMade());
         for ( MOVE move: moves) {
             Game copyGame = gameState.copy();
-            copyGame.advanceGame(move, new StarterGhosts().getMove(copyGame, timeDue));
+            copyGame.advanceGame(move, new POCommGhosts().getMove(copyGame, timeDue)); 
+            // copyGame.advanceGame(move, new StarterGhosts().getMove());//new starterGhost become new POCommGhost
 
                 value =  dfsRecursive(copyGame, timeDue, counter+1, limit);
                 if (value > best) best = value;
