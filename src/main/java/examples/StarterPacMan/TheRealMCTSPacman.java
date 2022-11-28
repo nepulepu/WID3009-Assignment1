@@ -16,6 +16,8 @@ import pacman.controllers.examples.StarterPacMan;
 import pacman.controllers.Controller;
 import pacman.controllers.examples.StarterPacMan;
 import examples.StarterGhostComm.POCommGhost;
+import pacman.controllers.MASController;
+import pacman.controllers.examples.po.POCommGhosts;
 import examples.StarterPacMan.MCTree;
 import pacman.game.Constants.GHOST;
 import pacman.game.Constants.MOVE;
@@ -26,7 +28,8 @@ public class TheRealMCTSPacman extends MCTree<Game, MOVE>{
 
 	private Random random = new Random();
 	
-	private Legacy2TheReckoning ghosts = new Legacy2TheReckoning();
+	// private Legacy2TheReckoning ghosts = new Legacy2TheReckoning();
+	private MASController ghosts = new POCommGhosts(50);
 	private Controller<MOVE> defaultPacmanController = new RandomNonRevPacMan();
 	
 	private int maxIterations = 360;
