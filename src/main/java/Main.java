@@ -41,21 +41,15 @@ public class Main {
         controllers.put(GHOST.SUE, new Sue());
 
         MASController ghosts = new POCommGhosts(50);
-        // Controller<MOVE> pacmanController = new MCTPacman();
+
         // delay=10; smaller delay for faster gameplay tree search
-        // executor.runGame(new TreeSearchPacMan(), ghosts, 10); 
-
-        // monte carlo version
-        // executor.runGame(new MonteCarloPacMan(), ghosts, 10);
-
-        // A Star
-        // executor.runGame(new AStar(), ghosts, 10);
+        executor.runGame(new TreeSearchPacMan(), ghosts, 10); 
 
         //DFS
         // executor.runGame(new DFS(), ghosts, 10);
 
         //MCTS
-        executor.runGame(new MCTPacman(),ghosts,10);
+        // executor.runGame(new MCTPacman(),ghosts,10);
         // executor.runGame(new CustomTreeSearchPacMan(), ghosts, 10);
     }
 }

@@ -33,9 +33,10 @@ public class DFS extends Controller<Constants.MOVE> {
         int best = 0;
         int value= gameState.getScore();
         if (counter >= 99) { best = value; return best;}
-        if (gameState.getPacmanNumberOfLivesRemaining() <= 0) return -50;
+        // if (gameState.gameOver()) return -200;
+        if (gameState.wasPacManEaten()) return -80;
         if (gameState.getNumberOfActivePills()==0) {
-            value = gameState.getScore();
+            value = gameState.getScore()*20;
             return value;
         }
         MOVE[] moves = gameState.getPossibleMoves(gameState.getPacmanCurrentNodeIndex(), gameState.getPacmanLastMoveMade());
