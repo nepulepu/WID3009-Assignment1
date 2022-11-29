@@ -16,9 +16,6 @@ import pacman.game.internal.POType;
 import java.util.EnumMap;
 
 
-/**
- * Created by pwillic on 06/05/2016.
- */
 public class Main {
     
 
@@ -43,10 +40,10 @@ public class Main {
         MASController ghosts = new POCommGhosts(50);
 
         // delay=10; smaller delay for faster gameplay tree search
-        executor.runGame(new TreeSearchPacMan(), ghosts, 10); 
+        // executor.runGame(new TreeSearchPacMan(), ghosts, 10); 
 
         //DFS
-        // executor.runGame(new DFS(), ghosts, 10);
+        executor.runGame(new DFS(), ghosts, 1);
 
         //MCTS
         // executor.runGame(new MCTPacman(),ghosts,10);
