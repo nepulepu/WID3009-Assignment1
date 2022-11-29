@@ -1,7 +1,7 @@
 package examples.StarterPacMan;
 
 import pacman.controllers.Controller;
-import pacman.controllers.examples.StarterGhosts;
+// import pacman.controllers.examples.StarterGhosts;
 import pacman.controllers.examples.po.POCommGhosts;
 import pacman.game.Constants;
 import pacman.game.Game;
